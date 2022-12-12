@@ -1,11 +1,11 @@
 const Express = require('express');
 const database = require('./database');
 const routes = require ('./routes');
-//const postagem = require('./routes/postagens');
+
 const app = Express();
 app.use(Express.json());
 routes.setRoutes(app);
-//app.use(postagem);
+
 
 //Definindo "Not Found"
 app.use((req,res, next)=>{
