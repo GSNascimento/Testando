@@ -1,8 +1,8 @@
-const postagem = require('./postagens');
+const usuario = require('./Usuarios');
 
 
 module.exports={
     setRoutes(app){
-        app.use(postagem);
+        app.use(usuario);
     }
 }

@@ -16,6 +16,31 @@ const Usuario = dbConnection.define("Usuario",
         senha:{
             type:DataTypes.STRING,
             allowNull:false
+        },
+        cpf:{
+            type:DataTypes.STRING,
+            allowNull:false,
+        },
+        email:{
+            type:DataTypes.STRING,
+            allowNull:false
+        },
+        cep:{
+            type:DataTypes.INTEGER
+        },
+        cidade:{
+            type:DataTypes.STRING
+        },
+        estado:{
+            type:DataTypes.STRING
+        },
+        telefone:{
+            type:DataTypes.STRING,
+            allowNull:false
+        },
+        nascimento:{
+            type:DataTypes.STRING,
+            allowNull:false
         }
 
     },{

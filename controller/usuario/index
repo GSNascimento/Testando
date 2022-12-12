@@ -1,0 +1,52 @@
+const Usuario = require('../../model/usuario');
+
+module.exports={
+    async create(req, res, next) {
+        const { nome, senha, cpf, email, cep, cidade, estado, telefone, nascimento}= req.body;
+        if (nome == undefined || nome == '') {
+        res.status(406).json({ message: "Nome não informado." })
+        }
+        else if (senha == undefined || senha == '') {
+            res.status(406).json({ message: "Senha não informada." })
+        }
+        else if (cpf == undefined || cpf == '') {
+            res.status(406).json({ message: "Cpf não informado." })
+        }
+        else if (email == undefined || email == '') {
+            res.status(406).json({ message: "E-mail não informado." })
+        }
+        else if (telefone == undefined || telefone == '') {
+            res.status(406).json({ message: "Telefone não informado." })
+        } 
+        else if (nascimento == undefined || nascimento == '') {
+            res.status(406).json({ message: "Nascimento não informado." })
+        }
+        else{
+          
+                    Usuario.create({
+                        nome:nome, 
+                        senha:senha, 
+                        cpf:cpf, 
+                        email:email, 
+                        cep:cep, 
+                        cidade:cidade, 
+                        estado:estado, 
+                        telefone:telefone, 
+                        nascimento:nascimento
+                    }).then(post => {
+                            if (post!= undefined) { 
+                                res.status(200).json({ message: "Usuario cadastrado com sucesso", post})
+                            }
+                            else{
+                                next();
+                            }
+                    }).catch(err=>{
+                        next(err);
+                    }
+                    );
+           
+          
+                
+        }
+    }
+}
